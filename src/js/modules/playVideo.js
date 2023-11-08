@@ -36,7 +36,7 @@ export default class VideoPlayer{
     }
 
     createPlayer(url){
-        this.player=new YT.Player('frame', {
+        this.player=new YT.Player('frame', { // вместо frame подкл проигрыватель
             height: '100%',
             width: '100%',
             videoId: `${url}`,
