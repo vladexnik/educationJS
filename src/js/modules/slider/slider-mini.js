@@ -27,29 +27,13 @@ export default class MiniSlider extends Slider{
     }  
     
     nextSlide(){
-        if (this.prev.parentNode === this.container) {
+        if (this.prev.parentElement === this.container) {
             console.log(this.prev.parentNode);
             this.container.insertBefore(this.slides[0], this.prev);
          } else {
             this.container.appendChild(this.slides[0]);
          }
          this.decorizeSlides();
-
-        // if(this.slides[1].tagName=="BUTTON" &&
-        // this.slides[2].tagName=="BUTTON"){
-        //     this.container.appendChild(this.slides[2]); // btn
-        //     this.container.appendChild(this.slides[1]); // btn
-        //     this.container.appendChild(this.slides[0]); // slide
-        //     this.decorizeSlides();
-        // } else if(this.slides[1].tagName=="BUTTON"){
-        //     this.container.appendChild(this.slides[1]); // btn
-        //     this.container.appendChild(this.slides[0]); // slide
-        //     this.decorizeSlides();
-        // } else {
-        // this.container.appendChild(this.slides[0]); 
-        //  // добавляем в конец container 1ый слайд
-        //  this.decorizeSlides();
-        // }
     }
 
     bindTriggers(){
