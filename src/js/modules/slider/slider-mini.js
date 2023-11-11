@@ -61,32 +61,31 @@ export default class MiniSlider extends Slider{
 
     init(){
         // console.log(this.container,this.prev,this.next);
-        this.container.style.cssText=`
+        
+        try{
+            this.container.style.cssText=`
             display:flex;
             flex-wrap: wrap;
             overflow: hidden;
             align-items: flex-start;
-        `;
-        this.bindTriggers();
-        this.decorizeSlides();
-    
-        if(this.autoplay){
-            this.activateAnimation();
-
-            [this.container, this.next, this.prev].forEach(item=>{
-                item.addEventListener('mouseover',()=>{
-                    clearInterval(this.paused);
-                })
-                item.addEventListener('mouseout',()=>{
-                    this.activateAnimation();
-                })
-            })
-        }
-
-
+            `;
+            this.bindTriggers();
+            this.decorizeSlides();
         
+            if(this.autoplay){
+                this.activateAnimation();
 
-    
+                [this.container, this.next, this.prev].forEach(item=>{
+                    item.addEventListener('mouseover',()=>{
+                        clearInterval(this.paused);
+                    })
+                    item.addEventListener('mouseout',()=>{
+                        this.activateAnimation();
+                    })
+                })
+            } 
+        } catch(e){}
+
     }
 
 }
