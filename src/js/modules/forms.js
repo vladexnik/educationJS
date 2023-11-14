@@ -1,3 +1,7 @@
+import { db} from '../modules/firebaseConfig';
+
+import { addDoc, collection} from "firebase/firestore"; 
+
 
 
 export default class Form{
@@ -54,7 +58,7 @@ export default class Form{
         }
     
         function createMask(event){
-            let matrix='+1 (___) ___-___',
+            let matrix='+1 (___) ___-____',
                 i=0,
                 def=matrix.replace(/\D/g, ''),
                 val=this.value.replace(/\D/g, ''); // избавл от не цифр
@@ -79,7 +83,7 @@ export default class Form{
             // количество цифр в номере проверка
             let btnsOrder=document.querySelectorAll('.btn');
             btnsOrder.forEach(btnOrder=>{
-                if(val.length<10){
+                if(val.length<11){
                    btnOrder.setAttribute("disabled","disabled");
                 }
                 else{
@@ -116,14 +120,9 @@ export default class Form{
 
 
     async postData(url, data) {
-        let res=await fetch(url, {
-            method: "POST",
-            body: data
-        });
-
-        return await res.text();
+        await addDoc(collection(db, "orders"), data); 
+    
     }
-
 
 
     init(){
@@ -138,13 +137,14 @@ export default class Form{
                 status.textContent=this.message.loading;
                 status.style.cssText=`
                     color: grey;
-                    font-size: 18px;
+                    font-size: 21px;
                     padding-top: 20px;
+                    font: Georgia, serif;
                     
                 `
                 let formData=new FormData(form);
-
-                this.postData(this.path.question, formData)
+                let formDataObject = Object.fromEntries(formData.entries());
+                this.postData(this.path.question, formDataObject)
                     .then(res=>{
                         console.log(res);
                         status.textContent=this.message.success;

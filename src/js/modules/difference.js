@@ -34,7 +34,6 @@ export default class Difference {
 
     }
 
-
     init(){
 
         try{
@@ -45,6 +44,5 @@ export default class Difference {
 
         } catch(e){}
     }
-     
-
+    
 }

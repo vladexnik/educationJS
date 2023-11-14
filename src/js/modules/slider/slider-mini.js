@@ -28,7 +28,7 @@ export default class MiniSlider extends Slider{
     
     nextSlide(){
         if (this.prev.parentElement === this.container) {
-            console.log(this.prev.parentNode);
+            // console.log(this.prev.parentNode);
             this.container.insertBefore(this.slides[0], this.prev);
          } else {
             this.container.appendChild(this.slides[0]);

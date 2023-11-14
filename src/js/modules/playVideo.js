@@ -72,12 +72,9 @@ export default class VideoPlayer{
     onPlayerStateChange(state){
         try{
             const blockedElem=this.aciveBtn.closest('.module__video-item').nextElementSibling;
-        
             const playBtn=this.aciveBtn.querySelector('svg').cloneNode(true); // скопировали svg for play
-            // true чтоб скопирать всё что внутри svg
-        
-            // console.log(playBtn.querySelector('path'));
-            if(state.data===0){
+
+            if(state.data===1){
                 console.log('watched');
                 console.log(blockedElem);
                 if(blockedElem.querySelector('.play__circle').classList.contains('closed'))
@@ -108,10 +105,5 @@ export default class VideoPlayer{
             this.bindClose();
             this.bindCloseBackground();
         }
-
-
-
-
-
     }
 }

@@ -33,15 +33,34 @@ export default class MainSlider extends Slider{
         Array.from(this.slides).forEach(slide => {
             slide.style.display = 'none';
         });
-
+        this.slides[this.slideIndex-1].classList.add('animated', 'fadeIn');
         this.slides[this.slideIndex - 1].style.display = 'block';
     }
+
+    goToSchedule(){
+        let btns=document.querySelectorAll('.menu__block-schedule');
+        
+        btns.forEach(btn=>{
+            btn.addEventListener('click',()=>{
+                console.log(1);
+                console.log(Array.from(this.slides));
+                Array.from(this.slides).forEach(slide => {
+                    slide.style.display = 'none';
+                });
+                this.slideIndex=4;
+                this.showSlides(this.slideIndex);
+                
+            })
+        })
+    }
+
 
     plusSlides(n) {
         this.showSlides(this.slideIndex += n);
     }
 
     bindTriggers(){
+
         this.btns.forEach(item => {
             item.addEventListener('click', () => {
                 this.plusSlides(1);
@@ -50,6 +69,7 @@ export default class MainSlider extends Slider{
             item.parentNode.previousElementSibling.addEventListener('click', (e) => {
                 e.preventDefault();
                 this.slideIndex=1;
+                
                 this.showSlides(this.slideIndex);
             });
         });
@@ -81,6 +101,7 @@ export default class MainSlider extends Slider{
 
             this.showSlides(this.slideIndex);
             this.bindTriggers();
+            this.goToSchedule();
         } 
     }
 }

@@ -25,6 +25,7 @@
 		"webpack-stream": "^7.0.0"
 	},
 	"dependencies": {
+		"firebase": "^10.6.0",
 		"jquery": "^3.7.0",
 		"slick-carousel": "^1.8.1"
 	}
