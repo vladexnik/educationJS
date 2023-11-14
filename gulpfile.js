@@ -4,7 +4,7 @@ const gulp = require("gulp");
 const webpack = require("webpack-stream");
 const browsersync = require("browser-sync");
 
-const dist = "./dist/";
+const dist = "./docs/";
 // const dist = "D:/Programms/MAMP/htdocs/source3"; // Ссылка на вашу папку на сервере
 
 gulp.task("copy-html", () => {
@@ -54,7 +54,7 @@ gulp.task("copy-assets", () => {
 gulp.task("watch", () => {
     browsersync.init({
         server: {
-            baseDir: "./dist/",
+            baseDir: "./docs/",
             serveStaticOptions: {
                 extensions: ["html"]
             }
